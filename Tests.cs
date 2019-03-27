@@ -1,5 +1,6 @@
 using OpenQA.Selenium.Chrome;
 using System;
+using System.Drawing;
 
 namespace WebDriverTest
 {
@@ -10,6 +11,9 @@ namespace WebDriverTest
         {
             using (var driver = new ChromeDriver())
             {
+                // This line is what causes the issue
+                driver.Manage().Window.Size = new Size(1024, 663);
+
                 try
                 {
                     driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
